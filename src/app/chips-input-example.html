@@ -1,0 +1,25 @@
+<mat-form-field class="example-chip-list" appearance="fill">
+  <mat-label>Favorite Fruits</mat-label>
+  <mat-chip-list #chipList cdkDropList aria-label="Fruit selection" (cdkDropListDropped)="drop($event)">
+    <mat-chip *ngFor="let fruit of fruits" cdkDrag (removed)="remove(fruit)">
+      {{fruit.name}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input placeholder="New fruit..."
+            #tagsInputRef
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+</mat-form-field>
+
+
+{{ fruits | json }}
+
+<button (click)="test()">test</button>
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
